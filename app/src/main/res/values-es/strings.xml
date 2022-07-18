@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplicación Meteorológica</string>
+    <string name="day_of">Día de </string>
+    <string name="weather_for">El tiempo para </string>
+    <string name="min_temp">Temperatura mínima: </string>
+    <string name="max_temp">Temperatura máxima: </string>
+    <string name="avg_temp">Temperatura media: </string>
+    <string name="total_precip">Precip total: </string>
+    <string name="dialog_okay">Bien</string>
+</resources>

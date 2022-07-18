@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="day_of">Day Of </string>
+    <string name="weather_for">Weather For </string>
+    <string name="min_temp">Min Temp: </string>
+    <string name="max_temp">Max Temp: </string>
+    <string name="avg_temp">Avg Temp: </string>
+    <string name="total_precip">Total Precip: </string>
+    <string name="dialog_okay">Okay</string>
+</resources>
