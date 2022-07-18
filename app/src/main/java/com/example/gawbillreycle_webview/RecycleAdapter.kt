@@ -33,9 +33,9 @@ class RecycleAdapter(weatherWeek:ArrayList<Weather>): RecyclerView.Adapter<Recyc
      */
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         var weatherDay:Weather = arrayOfWeather.get(position)
-        holder.dayTextView.text = holder.itemView.context.getString(R.string.day_of) + weatherDay.day
-        holder.minTempTextView.text = holder.itemView.context.getString(R.string.min_temp) + weatherDay.minTemp.toString() + "F"
-        holder.maxTempTextView.text = holder.itemView.context.getString(R.string.max_temp) + weatherDay.maxTemp.toString() + "F"
+        holder.dayTextView.text = holder.itemView.context.getString(R.string.day_of) + " " + weatherDay.day
+        holder.minTempTextView.text = holder.itemView.context.getString(R.string.min_temp) + " " + weatherDay.minTemp.toString() + "F"
+        holder.maxTempTextView.text = holder.itemView.context.getString(R.string.max_temp) + " " + weatherDay.maxTemp.toString() + "F"
         Log.d(LOG_TAG,"Binding the data")
         holder.itemView.setOnClickListener(View.OnClickListener {
             rowOnClick(holder.itemView.context, position)
@@ -67,10 +67,10 @@ class RecycleAdapter(weatherWeek:ArrayList<Weather>): RecyclerView.Adapter<Recyc
 
         var builder: AlertDialog.Builder = AlertDialog.Builder(context)
         builder.setTitle(context.getString(R.string.weather_for) + day)
-        builder.setMessage(context.getString(R.string.min_temp) + minTemp.toString() + "F\n" +
-                        context.getString(R.string.max_temp) + maxTemp.toString() + "F\n" +
-                        context.getString(R.string.avg_temp) + avgTemp.toString() + "F\n" +
-                        context.getString(R.string.total_precip) + totalPrecip.toString() + "in")
+        builder.setMessage(context.getString(R.string.min_temp) + " " +  minTemp.toString() + "F\n" +
+                        context.getString(R.string.max_temp) + " " + maxTemp.toString() + "F\n" +
+                        context.getString(R.string.avg_temp) + " " + avgTemp.toString() + "F\n" +
+                        context.getString(R.string.total_precip) + " " + totalPrecip.toString() + "in")
         builder.setPositiveButton(context.getString(R.string.dialog_okay),
             DialogInterface.OnClickListener { dialog, which ->
             })
