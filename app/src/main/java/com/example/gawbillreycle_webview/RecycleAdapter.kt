@@ -66,7 +66,7 @@ class RecycleAdapter(weatherWeek:List<Weather>): RecyclerView.Adapter<RecycleAda
         var totalPrecip:Double = weatherDay.totalPrecip
 
         var builder: AlertDialog.Builder = AlertDialog.Builder(context)
-        builder.setTitle(context.getString(R.string.weather_for) + day)
+        builder.setTitle(context.getString(R.string.weather_for) + " " +  day)
         builder.setMessage(context.getString(R.string.min_temp) + " " +  minTemp.toString() + "F\n" +
                         context.getString(R.string.max_temp) + " " + maxTemp.toString() + "F\n" +
                         context.getString(R.string.avg_temp) + " " + avgTemp.toString() + "F\n" +
