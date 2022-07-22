@@ -13,8 +13,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.recyclerview.widget.RecyclerView
 
-class RecycleAdapter(weatherWeek:ArrayList<Weather>): RecyclerView.Adapter<RecycleAdapter.WeatherViewHolder>() {
-    var arrayOfWeather: ArrayList<Weather> = weatherWeek
+class RecycleAdapter(weatherWeek:List<Weather>): RecyclerView.Adapter<RecycleAdapter.WeatherViewHolder>() {
+    var arrayOfWeather: List<Weather> = weatherWeek
     var LOG_TAG:String = RecycleAdapter::class.java.simpleName
 
 

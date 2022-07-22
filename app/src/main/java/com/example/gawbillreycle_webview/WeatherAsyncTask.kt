@@ -1,20 +1,19 @@
 package com.example.gawbillreycle_webview
 
+import android.content.ContentValues
 import android.os.AsyncTask
 import android.util.Log
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.Double.parseDouble
-import java.lang.Integer.parseInt
 import java.lang.ref.WeakReference
-import java.lang.reflect.Array.getInt
 
-class WeatherAsyncTask(view:RecyclerView):AsyncTask<String, Void, String>() {
+
+class WeatherAsyncTask(view:RecyclerView, data:AppDatabase):AsyncTask<String, Void, String>() {
     var LOG_TAG:String = WeatherAsyncTask::class.java.simpleName
     var recycler:WeakReference<RecyclerView> = WeakReference(view)
+    var db:WeakReference<AppDatabase> = WeakReference(data)
     /**
      * This method calls NetworkUtils to get the api JSON data
      */
@@ -47,18 +46,24 @@ class WeatherAsyncTask(view:RecyclerView):AsyncTask<String, Void, String>() {
                 var avgTemp:Double = parseDouble(dayDetails.getString("avgtemp_f").toString())
                 var totalPrecip:Double = parseDouble(dayDetails.getString("totalprecip_in").toString())
 
-                var weather:Weather = Weather(date, maxTemp, minTemp, avgTemp, totalPrecip)
+                var weather:Weather = Weather(0,date, maxTemp, minTemp, avgTemp, totalPrecip)
                 weatherArray.add(weather)
                 i++
             }
-            Log.d(LOG_TAG,"Got the data")
-            var adapter:RecycleAdapter = RecycleAdapter(weatherArray)
-            recycler.get()?.adapter = adapter
+             putIntoRoom(weatherArray)
 
 
         }catch(ex:Exception){
             Log.d(LOG_TAG,"There was an error")
             ex.printStackTrace()
+        }
+    }
+    fun putIntoRoom(weatherArray:ArrayList<Weather>){
+        AppExecutors.getInstance().diskIO().execute {
+            val weatherDao = db.get()?.weatherDao()
+            weatherDao?.insertAll(weatherArray)
+
+            Log.d(ContentValues.TAG, "Submitted person")
         }
     }
 }
