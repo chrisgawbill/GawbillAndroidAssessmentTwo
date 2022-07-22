@@ -8,4 +8,5 @@
     <string name="avg_temp">Temperatura media: </string>
     <string name="total_precip">Precip total: </string>
     <string name="dialog_okay">Bien</string>
+    <string name="get_data">obtener datos</string>
 </resources>

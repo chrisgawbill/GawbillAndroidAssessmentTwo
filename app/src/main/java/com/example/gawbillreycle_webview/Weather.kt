@@ -7,7 +7,8 @@ import java.lang.reflect.Array.get
 
 /**
  * This is the Weather object which holds detail for weather for each fetched day
- * There is a getter method for each variable so it can be fetched when displaying data in recycler view
+ * This is a data class that is an Entity which tells Room that this is a table
+ * Auto gens primary key
  */
 @Entity
 data class Weather(

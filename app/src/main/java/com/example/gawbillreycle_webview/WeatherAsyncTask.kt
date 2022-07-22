@@ -58,12 +58,19 @@ class WeatherAsyncTask(view:RecyclerView, data:AppDatabase):AsyncTask<String, Vo
             ex.printStackTrace()
         }
     }
+
+    /**
+     * Here we are putting the data gotten from the JSON into room db
+     * We are putting the data in as a list because in the WeatherDao.insertAll()
+     * it will take that list and put each item into room DB
+     */
     fun putIntoRoom(weatherArray:ArrayList<Weather>){
         AppExecutors.getInstance().diskIO().execute {
             val weatherDao = db.get()?.weatherDao()
+            weatherDao?.deleteAll()
             weatherDao?.insertAll(weatherArray)
 
-            Log.d(ContentValues.TAG, "Submitted person")
+            Log.d(ContentValues.TAG, "Submitted weather")
         }
     }
 }
